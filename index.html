@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeStart — Изучай программирование с нуля</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Хедер сайта -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="directions.html">Направления</a></li>
+            <li><a href="about.html">О нас</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" placeholder="Поиск курсов..." aria-label="Поиск курсов">
+        </div>
+
+        <!-- Переключатель темной/светлой темы -->
+        <button class="btn-theme-toggle" id="theme-toggle" aria-label="Переключить тему" title="Светлая / Темная тема">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Зона авторизации с точкой-переключателем режима -->
+        <div class="auth-area">
+          <!-- Точка-переключатель для демонстрации (скрыть/показать профиль) -->
+          <button class="demo-toggle-dot" id="demo-auth-toggle" data-tooltip="Кликните точку для смены режима (Профиль / Войти)" aria-label="Переключить режим профиля">
+            <span class="dot-core"></span>
+          </button>
+
+          <!-- Виджет профиля пользователя (по умолчанию отображается для проверки) -->
+          <div class="user-profile-widget" id="user-profile-btn">
+            <a href="profile.html" class="user-profile-btn">
+              <span class="user-avatar-sm" id="header-avatar-initials">АС</span>
+              <span class="user-name-sm" id="header-user-firstname">Александр</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <!-- Выпадающее меню профиля -->
+            <div class="user-dropdown-menu" id="user-dropdown">
+              <a href="profile.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Мой профиль
+              </a>
+              <a href="courses.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Каталог курсов
+              </a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item logout-btn" id="logout-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Выйти
+              </button>
+            </div>
+          </div>
+
+          <!-- Кнопка Войти (появляется при скрытии профиля) -->
+          <button class="btn-login" id="header-login-btn" data-action="login" style="display: none;">Войти</button>
+        </div>
+
+        <button class="menu-toggle" aria-label="Открыть меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Главный баннер (Hero) -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <h1 class="hero-title">Изучай<br>программирование<br>с нуля</h1>
+            <p class="hero-desc">Практические курсы по программированию, информатике и разработке.</p>
+            <a href="courses.html" class="btn-primary">
+              <span>Начать обучение</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="code-preview-wrap">
+            <div class="code-card" id="hero-code-editor">
+              <div class="code-header">
+                <div class="code-dots">
+                  <span class="code-dot"></span>
+                  <span class="code-dot"></span>
+                  <span class="code-dot"></span>
+                </div>
+                <span class="code-title">hello_world.py</span>
+              </div>
+              <div class="code-content">
+                <div class="code-line">
+                  <span class="line-num">1</span>
+                  <span class="code-comment"># Всё начинается с первой строки</span>
+                </div>
+                <div class="code-line">
+                  <span class="line-num">2</span>
+                  <span><span class="code-var">name</span> = <span class="code-str">"CodeStart"</span></span>
+                </div>
+                <div class="code-line">
+                  <span class="line-num">3</span>
+                  <span><span class="code-fn">print</span>(<span class="code-str">"Привет, мир!"</span>)</span>
+                </div>
+                <div class="code-line">
+                  <span class="line-num">4</span>
+                  <span></span>
+                </div>
+                <div class="code-line">
+                  <span class="line-num">5</span>
+                  <span class="code-comment"># Твой код. Твои возможности.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Всплывающий статус выполнения кода -->
+            <div class="code-toast">
+              <div class="toast-status">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+                <span>Код выполнен успешно</span>
+              </div>
+              <div class="toast-output">Привет, мир!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Широкий фото-баннер 1: Студенты и практическое обучение (с переключением и анимацией) -->
+    <section class="banner-section">
+      <div class="container">
+        <div class="photo-banner-wrap" id="banner-students">
+          <div class="photo-banner-slide active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Студенты изучают разработку" class="photo-banner-img">
+          </div>
+          <div class="photo-banner-slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1400&q=80" alt="Практика в команде" class="photo-banner-img">
+          </div>
+          <div class="photo-banner-slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1400&q=80" alt="Совместное программирование" class="photo-banner-img">
+          </div>
+          
+          <div class="photo-banner-overlay">
+            <div class="banner-caption-box">
+              <span class="banner-tag">Практика и комьюнити</span>
+              <div class="banner-title">Учись вместе с единомышленниками и опытными наставниками</div>
+            </div>
+            <div class="banner-controls">
+              <button class="banner-btn-switch banner-prev" aria-label="Предыдущее фото">❮</button>
+              <button class="banner-btn-switch banner-next" aria-label="Следующее фото">❯</button>
+            </div>
+          </div>
+
+          <div class="banner-dots">
+            <button class="banner-dot-item active" data-slide="0"></button>
+            <button class="banner-dot-item" data-slide="1"></button>
+            <button class="banner-dot-item" data-slide="2"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция: Популярные курсы -->
+    <section class="section" style="padding-top: 10px;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Популярные курсы</h2>
+        </div>
+
+        <div class="courses-grid-4">
+          <!-- Карточка 1: Python с нуля -->
+          <article class="course-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+            <h3>Python с нуля</h3>
+            <p>Напиши первые программы и освой основы самого дружелюбного языка.</p>
+            <div class="card-level">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+              </svg>
+              <span>Для начинающих</span>
+            </div>
+            <a href="#" class="btn-card" data-course-details="python" style="margin-top: 18px;">Подробнее</a>
+          </article>
+
+          <!-- Карточка 2: Основы C++ -->
+          <article class="course-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3>Основы C++</h3>
+            <p>Разберись с переменными, циклами и функциями на языке C++.</p>
+            <div class="card-level">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+              </svg>
+              <span>Для начинающих</span>
+            </div>
+            <a href="#" class="btn-card" data-course-details="cpp" style="margin-top: 18px;">Подробнее</a>
+          </article>
+
+          <!-- Карточка 3: Web-разработка -->
+          <article class="course-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <h3>Web-разработка</h3>
+            <p>Создай свой первый сайт с помощью HTML, CSS и JavaScript.</p>
+            <div class="card-level">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+              </svg>
+              <span>Для начинающих</span>
+            </div>
+            <a href="#" class="btn-card" data-course-details="web" style="margin-top: 18px;">Подробнее</a>
+          </article>
+
+          <!-- Карточка 4: Алгоритмы и структуры данных -->
+          <article class="course-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="18" cy="18" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                <circle cx="18" cy="6" r="3"></circle>
+              </svg>
+            </div>
+            <h3>Алгоритмы и структуры данных</h3>
+            <p>Научись решать задачи и выбирать эффективные алгоритмы.</p>
+            <div class="card-level">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="4"></line>
+                <line x1="12" y1="20" x2="12" y2="10"></line>
+                <line x1="6" y1="20" x2="6" y2="16"></line>
+              </svg>
+              <span>Средний уровень</span>
+            </div>
+            <a href="#" class="btn-card" data-course-details="algo" style="margin-top: 18px;">Подробнее</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Широкий фото-баннер 2: Рабочее место программиста (с переключением и анимацией) -->
+    <section class="banner-section" style="padding-top: 10px; padding-bottom: 24px;">
+      <div class="container">
+        <div class="photo-banner-wrap" id="banner-workspace">
+          <div class="photo-banner-slide active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80" alt="Рабочее место программиста" class="photo-banner-img">
+          </div>
+          <div class="photo-banner-slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1400&q=80" alt="Написание чистого кода" class="photo-banner-img">
+          </div>
+          <div class="photo-banner-slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1400&q=80" alt="Современная среда разработки" class="photo-banner-img">
+          </div>
+
+          <div class="photo-banner-overlay">
+            <div class="banner-caption-box">
+              <span class="banner-tag">Реальные проекты</span>
+              <div class="banner-title">От первой строки кода до полноценных готовых проектов в портфолио</div>
+            </div>
+            <div class="banner-controls">
+              <button class="banner-btn-switch banner-prev" aria-label="Предыдущее фото">❮</button>
+              <button class="banner-btn-switch banner-next" aria-label="Следующее фото">❯</button>
+            </div>
+          </div>
+
+          <div class="banner-dots">
+            <button class="banner-dot-item active" data-slide="0"></button>
+            <button class="banner-dot-item" data-slide="1"></button>
+            <button class="banner-dot-item" data-slide="2"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция: Направления обучения (Превью 5 направлений) -->
+    <section class="section" style="padding-top: 10px; padding-bottom: 72px;">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Направления обучения</h2>
+        </div>
+
+        <div class="tracks-grid-5">
+          <!-- 1. Programming -->
+          <a href="directions.html#programming" class="track-preview-card">
+            <div class="track-preview-top">
+              <div class="track-preview-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <svg class="track-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+            <div class="track-preview-name">Programming</div>
+          </a>
+
+          <!-- 2. Web Development -->
+          <a href="directions.html#web" class="track-preview-card">
+            <div class="track-preview-top">
+              <div class="track-preview-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                  </path>
+                </svg>
+              </div>
+              <svg class="track-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+            <div class="track-preview-name">Web Development</div>
+          </a>
+
+          <!-- 3. Algorithms -->
+          <a href="directions.html#algorithms" class="track-preview-card">
+            <div class="track-preview-top">
+              <div class="track-preview-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </div>
+              <svg class="track-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+            <div class="track-preview-name">Algorithms</div>
+          </a>
+
+          <!-- 4. Databases -->
+          <a href="directions.html#databases" class="track-preview-card">
+            <div class="track-preview-top">
+              <div class="track-preview-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+              <svg class="track-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+            <div class="track-preview-name">Databases</div>
+          </a>
+
+          <!-- 5. Game Development -->
+          <a href="directions.html#gamedev" class="track-preview-card">
+            <div class="track-preview-top">
+              <div class="track-preview-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="6" y1="12" x2="10" y2="12"></line>
+                  <line x1="8" y1="10" x2="8" y2="14"></line>
+                  <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                  <line x1="18" y1="11" x2="18.01" y2="11"></line>
+                  <rect x="2" y="6" width="20" height="12" rx="6"></rect>
+                </svg>
+              </div>
+              <svg class="track-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </div>
+            <div class="track-preview-name">Game Development</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Отзывы учеников</h2>
+          <p class="section-desc">Истории тех, кто уже начал свой путь в разработке.</p>
+        </div>
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 из 5">★★★★★</div>
+            <p>«Начала с бесплатного курса по Python, а через месяц уже собрала первый проект. Уроки понятные и без лишней теории».</p>
+            <strong>Анна К.</strong>
+            <span>Изучает Python</span>
+          </article>
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 из 5">★★★★★</div>
+            <p>«Понравилось, что обучение разбито на небольшие шаги. Теперь увереннее чувствую себя в JavaScript и React».</p>
+            <strong>Максим Р.</strong>
+            <span>Изучает Frontend</span>
+          </article>
+          <article class="review-card">
+            <div class="review-rating" aria-label="5 из 5">★★★★★</div>
+            <p>«Удобно заниматься в своём темпе и сразу применять новые знания в проектах для портфолио».</p>
+            <strong>Мария С.</strong>
+            <span>Изучает UI/UX-дизайн</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section support-section" id="help">
+      <div class="container support-grid">
+        <div>
+          <h2 class="section-title">Помощь и ответы на вопросы</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Можно ли начать бесплатно?</summary>
+              <div class="faq-answer"><p>Да, в каталоге есть бесплатные курсы. Их можно найти с помощью фильтра «Бесплатные».</p></div>
+            </details>
+            <details class="faq-item">
+              <summary>Как выбрать курс?</summary>
+              <div class="faq-answer"><p>Откройте каталог, выберите направление и уровень, а затем посмотрите программу курса.</p></div>
+            </details>
+            <details class="faq-item">
+              <summary>В каком темпе можно учиться?</summary>
+              <div class="faq-answer"><p>Занимайтесь в удобное время и проходите уроки в собственном темпе.</p></div>
+            </details>
+          </div>
+          <a class="btn-card support-more-link" href="faq.html">Все вопросы и ответы</a>
+        </div>
+        <aside class="contact-card" id="contacts">
+          <h2>Остались вопросы?</h2>
+          <p>Напишите команде CodeStart — поможем с выбором курса и началом обучения.</p>
+          <a class="btn-primary" href="contacts.html">Связаться с нами</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Подвал сайта (Footer) -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <span class="footer-copy">Учись создавать то, чем будешь гордиться.</span>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Обучение</strong>
+        <a href="courses.html">Все курсы</a>
+        <a href="directions.html">Направления</a>
+        <a href="about.html">О платформе</a>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Поддержка</strong>
+        <a href="help.html">Помощь</a>
+        <a href="faq.html">Вопросы и ответы</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="index.html#reviews">Отзывы учеников</a>
+        <a class="footer-contact" href="mailto:support@codestart.ru">support@codestart.ru</a>
+      </div>
+      <div class="footer-links">
+        <a class="footer-heading" href="payment.html">Способы оплаты</a>
+        <a href="payment.html">Посмотреть все способы оплаты</a>
+        <span class="footer-contact">Банковские карты и СБП</span>
+        <div class="footer-payment-methods" aria-label="Способы оплаты">
+          <span>МИР</span><span>СБП</span><span>Visa</span><span>Mastercard</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 CodeStart. Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно авторизации (Войти) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title">Вход в аккаунт</h2>
+      <p class="modal-subtitle">Войдите, чтобы продолжить обучение</p>
+      <form
+        onsubmit="event.preventDefault(); alert('Авторизация выполнена успешно!'); document.getElementById('auth-modal').classList.remove('active');">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Электронная почта</label>
+          <input type="email" id="login-email" class="form-input" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Пароль</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-submit">Войти</button>
+      </form>
+      <p class="modal-footer-text">
+        Нет аккаунта? <a href="#">Зарегистрироваться</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Модальное окно курса -->
+  <div class="modal-overlay" id="course-modal">
+    <div class="modal-card course-modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <div class="course-modal-tags">
+        <span class="tag-badge" id="modal-course-category">Категория</span>
+        <span class="tag-badge" id="modal-course-level">Уровень</span>
+      </div>
+      <h2 class="modal-title" id="modal-course-title">Название курса</h2>
+      <p class="modal-subtitle" id="modal-course-desc">Описание курса</p>
+
+      <div class="course-modal-syllabus">
+        <strong>Программа обучения (<span id="modal-course-duration">4 месяца</span>):</strong>
+        <ul class="syllabus-list" id="modal-course-syllabus">
+          <!-- Заполняется динамически через JS -->
+        </ul>
+      </div>
+
+      <a href="#" class="btn-primary" style="width: 100%;"
+        onclick="event.preventDefault(); alert('Вы записались на курс!'); document.getElementById('course-modal').classList.remove('active');">
+        Записаться на курс
+      </a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

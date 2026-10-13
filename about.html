@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О платформе — CodeStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Хедер сайта -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="directions.html">Направления</a></li>
+            <li><a href="about.html" class="active">О нас</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" placeholder="Поиск курсов..." aria-label="Поиск курсов">
+        </div>
+        <!-- Переключатель темной/светлой темы -->
+        <button class="btn-theme-toggle" id="theme-toggle" aria-label="Переключить тему" title="Светлая / Темная тема">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Зона авторизации с точкой-переключателем режима -->
+        <div class="auth-area">
+          <!-- Точка-переключатель для демонстрации (скрыть/показать профиль) -->
+          <button class="demo-toggle-dot" id="demo-auth-toggle" data-tooltip="Кликните точку для смены режима (Профиль / Войти)" aria-label="Переключить режим профиля">
+            <span class="dot-core"></span>
+          </button>
+
+          <!-- Виджет профиля пользователя -->
+          <div class="user-profile-widget" id="user-profile-btn">
+            <a href="profile.html" class="user-profile-btn">
+              <span class="user-avatar-sm" id="header-avatar-initials">АС</span>
+              <span class="user-name-sm" id="header-user-firstname">Александр</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <!-- Выпадающее меню профиля -->
+            <div class="user-dropdown-menu" id="user-dropdown">
+              <a href="profile.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Мой профиль
+              </a>
+              <a href="courses.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Каталог курсов
+              </a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item logout-btn" id="logout-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Выйти
+              </button>
+            </div>
+          </div>
+
+          <!-- Кнопка Войти (появляется при скрытии профиля) -->
+          <button class="btn-login" id="header-login-btn" data-action="login" style="display: none;">Войти</button>
+        </div>
+
+        <button class="menu-toggle" aria-label="Открыть меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Главный блок: О платформе с фотографией команды (макет 1) -->
+      <section class="about-hero-grid" style="padding-top: 48px;">
+        <div>
+          <h1 class="page-title">О платформе CodeStart</h1>
+          <p class="page-subtitle" style="line-height: 1.65;">
+            Мы делаем программирование доступным каждому — с нуля, без сложных терминов и страха ошибиться. Помогаем превратить интерес к технологиям в знания, уверенность и первые реальные проекты.
+          </p>
+        </div>
+        <div class="about-hero-img-wrap">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80" alt="Команда платформы CodeStart" class="about-hero-img">
+        </div>
+      </section>
+
+      <!-- Сетка статистики (4 карточки) -->
+      <section style="margin-bottom: 56px;">
+        <div class="stats-grid-4">
+          <div class="stat-card">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Курсов</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">5000+</span>
+            <span class="stat-label">Студентов</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">95%</span>
+            <span class="stat-label">Успешных выпускников</span>
+          </div>
+
+          <div class="stat-card">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Поддержка</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Блок преимуществ: Учиться проще, когда есть поддержка -->
+      <section class="section" style="padding-top: 0; padding-bottom: 80px;">
+        <div class="section-header">
+          <h2 class="section-title">Учиться проще, когда есть поддержка</h2>
+          <p class="section-desc">Всё, что нужно для уверенного старта в программировании, — в одном месте.</p>
+        </div>
+
+        <div class="features-grid-3">
+          <!-- Преимущество 1 -->
+          <article class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="4 17 10 11 4 5"></polyline>
+                <line x1="12" y1="19" x2="20" y2="19"></line>
+              </svg>
+            </div>
+            <h3>Практика с первого урока</h3>
+            <p>Не просто смотри видео — пиши код. Закрепляй каждую тему задачами и сразу применяй новые знания на практике.</p>
+          </article>
+
+          <!-- Преимущество 2 -->
+          <article class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>Наставники рядом</h3>
+            <p>Задавай вопросы, получай обратную связь и разбирай сложные темы вместе с опытными разработчиками. Ты не один на этом пути.</p>
+          </article>
+
+          <!-- Преимущество 3 -->
+          <article class="feature-card">
+            <div class="card-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <h3>Реальные проекты</h3>
+            <p>Создавай сайты и приложения, а не только учебные примеры. Собери первые проекты для портфолио и почувствуй себя разработчиком.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Подвал сайта (Footer) -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <span class="footer-copy">Учись создавать то, чем будешь гордиться.</span>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Обучение</strong>
+        <a href="courses.html">Все курсы</a>
+        <a href="directions.html">Направления</a>
+        <a href="about.html">О платформе</a>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Поддержка</strong>
+        <a href="help.html">Помощь</a>
+        <a href="faq.html">Вопросы и ответы</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="index.html#reviews">Отзывы учеников</a>
+        <a class="footer-contact" href="mailto:support@codestart.ru">support@codestart.ru</a>
+      </div>
+      <div class="footer-links">
+        <a class="footer-heading" href="payment.html">Способы оплаты</a>
+        <a href="payment.html">Посмотреть все способы оплаты</a>
+        <span class="footer-contact">Банковские карты и СБП</span>
+        <div class="footer-payment-methods" aria-label="Способы оплаты">
+          <span>МИР</span><span>СБП</span><span>Visa</span><span>Mastercard</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 CodeStart. Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно авторизации (Войти) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title">Вход в аккаунт</h2>
+      <p class="modal-subtitle">Войдите, чтобы продолжить обучение</p>
+      <form onsubmit="event.preventDefault(); alert('Авторизация выполнена успешно!'); document.getElementById('auth-modal').classList.remove('active');">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Электронная почта</label>
+          <input type="email" id="login-email" class="form-input" placeholder="name@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Пароль</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn-submit">Войти</button>
+      </form>
+      <p class="modal-footer-text">
+        Нет аккаунта? <a href="#">Зарегистрироваться</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

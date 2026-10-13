@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой профиль — CodeStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Хедер сайта -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="courses.html">Курсы</a></li>
+            <li><a href="directions.html">Направления</a></li>
+            <li><a href="about.html">О нас</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header-right">
+        <div class="search-box">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" class="search-input" placeholder="Поиск курсов..." aria-label="Поиск курсов">
+        </div>
+
+        <!-- Переключатель темной/светлой темы -->
+        <button class="btn-theme-toggle" id="theme-toggle" aria-label="Переключить тему" title="Светлая / Темная тема">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Зона авторизации с точкой-переключателем режима -->
+        <div class="auth-area">
+          <!-- Точка-переключатель для демонстрации (скрыть/показать профиль) -->
+          <button class="demo-toggle-dot" id="demo-auth-toggle" data-tooltip="Кликните точку для смены режима (Профиль / Войти)" aria-label="Переключить режим профиля">
+            <span class="dot-core"></span>
+          </button>
+
+          <!-- Виджет профиля пользователя -->
+          <div class="user-profile-widget" id="user-profile-btn">
+            <a href="profile.html" class="user-profile-btn">
+              <span class="user-avatar-sm" id="header-avatar-initials">АС</span>
+              <span class="user-name-sm" id="header-user-firstname">Александр</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </a>
+            <!-- Выпадающее меню профиля -->
+            <div class="user-dropdown-menu" id="user-dropdown">
+              <a href="profile.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Мой профиль
+              </a>
+              <a href="courses.html" class="dropdown-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                Каталог курсов
+              </a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-item logout-btn" id="logout-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                Выйти
+              </button>
+            </div>
+          </div>
+
+          <!-- Кнопка Войти (появляется при скрытии профиля) -->
+          <button class="btn-login" id="header-login-btn" data-action="login" style="display: none;">Войти</button>
+        </div>
+
+        <button class="menu-toggle" aria-label="Открыть меню">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <!-- Заголовок страницы -->
+      <section class="page-title-block" style="padding-bottom: 16px;">
+        <h1 class="page-title">Мой профиль</h1>
+        <p class="page-subtitle">Твой прогресс, учебные привычки и следующий шаг в программировании.</p>
+      </section>
+
+      <!-- Карточка пользователя с мета-информацией -->
+      <section class="profile-header-card">
+        <div class="profile-info-row">
+          <div class="profile-main-meta">
+            <div class="profile-avatar-lg" id="profile-page-avatar">АС</div>
+            <div>
+              <h2 class="profile-user-name" id="profile-page-fullname">Александр Смирнов</h2>
+              <div class="profile-user-handle" id="profile-page-handle">@alex_smirnov · alex.smirnov@mail.ru</div>
+              <div class="profile-registered-date">На CodeStart с 12 августа 2026</div>
+            </div>
+          </div>
+          <button class="btn-edit-profile" id="open-edit-profile-btn">
+            <span>Редактировать профиль</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Статистика пользователя -->
+        <div class="profile-stats-row">
+          <div class="profile-stat-box">
+            <span class="profile-stat-val">3</span>
+            <span class="profile-stat-lbl">курса в процессе</span>
+          </div>
+          <div class="profile-stat-box">
+            <span class="profile-stat-val">73</span>
+            <span class="profile-stat-lbl">урока пройдено</span>
+          </div>
+          <div class="profile-stat-box">
+            <span class="profile-stat-val">0</span>
+            <span class="profile-stat-lbl">курсов завершено</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция: Активность и календарь -->
+      <section class="activity-card">
+        <div class="activity-header">
+          <div>
+            <h2 class="activity-title">Активность</h2>
+            <p class="activity-subtitle">Каждый отмеченный день — твой визит на CodeStart.</p>
+          </div>
+          <div class="date-range-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>1 сентября — 8 октября 2026</span>
+          </div>
+        </div>
+
+        <div class="activity-body">
+          <!-- Левая колонка: Дней на платформе и серия -->
+          <div class="activity-left-stats">
+            <div>
+              <div class="days-count-num">28</div>
+              <div class="days-count-label">дней на платформе</div>
+              <div class="days-period-subtext">из 38 дней за выбранный период</div>
+            </div>
+
+            <div class="streak-card">
+              <div class="streak-top">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
+                </svg>
+                <span>6 дней подряд</span>
+              </div>
+              <div class="streak-subtext">Лучшая серия — 9 дней. Так держать!</div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Календари за Сентябрь и Октябрь -->
+          <div class="calendars-wrapper">
+            <!-- Сентябрь 2026 -->
+            <div class="calendar-month">
+              <div class="calendar-month-name">Сентябрь 2026</div>
+              <div class="calendar-weekdays">
+                <div class="calendar-weekday">Пн</div>
+                <div class="calendar-weekday">Вт</div>
+                <div class="calendar-weekday">Ср</div>
+                <div class="calendar-weekday">Чт</div>
+                <div class="calendar-weekday">Пт</div>
+                <div class="calendar-weekday">Сб</div>
+                <div class="calendar-weekday">Вс</div>
+              </div>
+              <div class="calendar-grid">
+                <!-- Неделя 1 (1 сентября - вторник) -->
+                <div class="cal-day empty"></div>
+                <div class="cal-day active" title="1 сентября: активность 2 урока">1</div>
+                <div class="cal-day active" title="2 сентября: активность 3 урока">2</div>
+                <div class="cal-day inactive">3</div>
+                <div class="cal-day active" title="4 сентября: активность 1 урок">4</div>
+                <div class="cal-day active" title="5 сентября: активность 4 урока">5</div>
+                <div class="cal-day inactive">6</div>
+                <!-- Неделя 2 -->
+                <div class="cal-day active" title="7 сентября: активность 2 урока">7</div>
+                <div class="cal-day active" title="8 сентября: активность 2 урока">8</div>
+                <div class="cal-day inactive">9</div>
+                <div class="cal-day active" title="10 сентября: активность 3 урока">10</div>
+                <div class="cal-day active" title="11 сентября: активность 1 урок">11</div>
+                <div class="cal-day active" title="12 сентября: активность 2 урока">12</div>
+                <div class="cal-day inactive">13</div>
+                <!-- Неделя 3 -->
+                <div class="cal-day active" title="14 сентября: активность 2 урока">14</div>
+                <div class="cal-day active" title="15 сентября: активность 3 урока">15</div>
+                <div class="cal-day active" title="16 сентября: активность 2 урока">16</div>
+                <div class="cal-day active" title="17 сентября: активность 4 урока">17</div>
+                <div class="cal-day active" title="18 сентября: активность 3 урока">18</div>
+                <div class="cal-day active" title="19 сентября: активность 2 урока">19</div>
+                <div class="cal-day active" title="20 сентября: активность 1 урок">20</div>
+                <!-- Неделя 4 -->
+                <div class="cal-day active" title="21 сентября: активность 3 урока">21</div>
+                <div class="cal-day active" title="22 сентября: активность 2 урока">22</div>
+                <div class="cal-day inactive">23</div>
+                <div class="cal-day active" title="24 сентября: активность 2 урока">24</div>
+                <div class="cal-day inactive">25</div>
+                <div class="cal-day active" title="26 сентября: активность 3 урока">26</div>
+                <div class="cal-day inactive">27</div>
+                <!-- Неделя 5 -->
+                <div class="cal-day active" title="28 сентября: активность 2 урока">28</div>
+                <div class="cal-day inactive">29</div>
+                <div class="cal-day active" title="30 сентября: активность 4 урока">30</div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+              </div>
+            </div>
+
+            <!-- Октябрь 2026 -->
+            <div class="calendar-month">
+              <div class="calendar-month-name">Октябрь 2026</div>
+              <div class="calendar-weekdays">
+                <div class="calendar-weekday">Пн</div>
+                <div class="calendar-weekday">Вт</div>
+                <div class="calendar-weekday">Ср</div>
+                <div class="calendar-weekday">Чт</div>
+                <div class="calendar-weekday">Пт</div>
+                <div class="calendar-weekday">Сб</div>
+                <div class="calendar-weekday">Вс</div>
+              </div>
+              <div class="calendar-grid">
+                <!-- Неделя 1 (1 октября - четверг) -->
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day empty"></div>
+                <div class="cal-day inactive">1</div>
+                <div class="cal-day inactive">2</div>
+                <div class="cal-day active" title="3 октября: активность 2 урока">3</div>
+                <div class="cal-day active" title="4 октября: активность 3 урока">4</div>
+                <!-- Неделя 2 -->
+                <div class="cal-day active" title="5 октября: активность 2 урока">5</div>
+                <div class="cal-day active" title="6 октября: активность 3 урока">6</div>
+                <div class="cal-day active" title="7 октября: активность 2 урока">7</div>
+                <div class="cal-day today" title="8 октября (Сегодня): пройдено 2 урока">8</div>
+                <div class="cal-day inactive">9</div>
+                <div class="cal-day inactive">10</div>
+                <div class="cal-day inactive">11</div>
+                <!-- Неделя 3 -->
+                <div class="cal-day inactive">12</div>
+                <div class="cal-day inactive">13</div>
+                <div class="cal-day inactive">14</div>
+                <div class="cal-day inactive">15</div>
+                <div class="cal-day inactive">16</div>
+                <div class="cal-day inactive">17</div>
+                <div class="cal-day inactive">18</div>
+                <!-- Неделя 4 -->
+                <div class="cal-day inactive">19</div>
+                <div class="cal-day inactive">20</div>
+                <div class="cal-day inactive">21</div>
+                <div class="cal-day inactive">22</div>
+                <div class="cal-day inactive">23</div>
+                <div class="cal-day inactive">24</div>
+                <div class="cal-day inactive">25</div>
+                <!-- Неделя 5 -->
+                <div class="cal-day inactive">26</div>
+                <div class="cal-day inactive">27</div>
+                <div class="cal-day inactive">28</div>
+                <div class="cal-day inactive">29</div>
+                <div class="cal-day inactive">30</div>
+                <div class="cal-day inactive">31</div>
+                <div class="cal-day empty"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity-footer">
+          <div>Последний визит: сегодня, 8 октября</div>
+          <div class="activity-legend">
+            <div class="legend-item">
+              <span class="legend-box inactive"></span>
+              <span>Не заходил</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-box active"></span>
+              <span>Заходил</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-box today"></span>
+              <span>Сегодня</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция: Мои курсы -->
+      <section style="padding-bottom: 80px;">
+        <div class="my-courses-header-row">
+          <h2 class="section-title" style="margin-bottom: 0;">Мои курсы</h2>
+          <a href="courses.html" class="link-all-courses">
+            <span>Все курсы</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Вкладки фильтрации курсов -->
+        <div class="my-courses-tabs">
+          <button class="my-course-tab active" id="tab-in-progress" data-status="in-progress">В процессе - 3</button>
+          <button class="my-course-tab" id="tab-completed" data-status="completed">Завершённые - 0</button>
+        </div>
+
+        <!-- Сетка курсов в процессе (3 карточки) -->
+        <div class="my-courses-grid" id="profile-courses-list">
+          
+          <!-- Курс 1: Python с нуля -->
+          <article class="my-course-card">
+            <div class="my-course-top">
+              <div class="card-icon" style="margin-bottom: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"></polyline>
+                  <line x1="12" y1="19" x2="20" y2="19"></line>
+                </svg>
+              </div>
+              <span class="status-badge">В процессе</span>
+            </div>
+            <div class="my-course-thumb">
+              <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=800&q=80" alt="Python с нуля" loading="lazy">
+            </div>
+            <h3>Python с нуля</h3>
+            <div class="course-sub">Основы языка и первые программы</div>
+
+            <div class="course-progress-wrap">
+              <div class="progress-labels">
+                <span>39 из 60 уроков</span>
+                <span class="progress-pct">65%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 65%;"></div>
+              </div>
+            </div>
+
+            <div class="next-lesson-block">
+              <div class="next-lesson-label">Следующий урок</div>
+              <div class="next-lesson-title">Модуль 5 · Функции и аргументы</div>
+            </div>
+
+            <button class="btn-primary" style="width: 100%;" onclick="openLessonModal('Python с нуля', 'Модуль 5 · Функции и аргументы')">
+              <span>Продолжить обучение</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </article>
+
+          <!-- Курс 2: Web-разработка -->
+          <article class="my-course-card">
+            <div class="my-course-top">
+              <div class="card-icon" style="margin-bottom: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <span class="status-badge">В процессе</span>
+            </div>
+            <div class="my-course-thumb">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80" alt="Web-разработка" loading="lazy">
+            </div>
+            <h3>Web-разработка</h3>
+            <div class="course-sub">HTML, CSS и JavaScript на практике</div>
+
+            <div class="course-progress-wrap">
+              <div class="progress-labels">
+                <span>24 из 80 уроков</span>
+                <span class="progress-pct">30%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 30%;"></div>
+              </div>
+            </div>
+
+            <div class="next-lesson-block">
+              <div class="next-lesson-label">Следующий урок</div>
+              <div class="next-lesson-title">Модуль 3 · Flexbox: выравнивание</div>
+            </div>
+
+            <button class="btn-primary" style="width: 100%;" onclick="openLessonModal('Web-разработка', 'Модуль 3 · Flexbox: выравнивание')">
+              <span>Продолжить обучение</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </article>
+
+          <!-- Курс 3: Основы C++ -->
+          <article class="my-course-card">
+            <div class="my-course-top">
+              <div class="card-icon" style="margin-bottom: 0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+              <span class="status-badge">В процессе</span>
+            </div>
+            <div class="my-course-thumb">
+              <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=800&q=80" alt="Основы C++" loading="lazy">
+            </div>
+            <h3>Основы C++</h3>
+            <div class="course-sub">Переменные, циклы и функции</div>
+
+            <div class="course-progress-wrap">
+              <div class="progress-labels">
+                <span>10 из 50 уроков</span>
+                <span class="progress-pct">20%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width: 20%;"></div>
+              </div>
+            </div>
+
+            <div class="next-lesson-block">
+              <div class="next-lesson-label">Следующий урок</div>
+              <div class="next-lesson-title">Модуль 2 · Условный оператор if</div>
+            </div>
+
+            <button class="btn-primary" style="width: 100%;" onclick="openLessonModal('Основы C++', 'Модуль 2 · Условный оператор if')">
+              <span>Продолжить обучение</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </article>
+
+        </div>
+
+        <!-- Пустой блок для вкладки "Завершённые" -->
+        <div class="courses-empty-state" id="empty-completed-courses">
+          <div class="empty-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 6px;">У вас пока нет завершённых курсов</h3>
+          <p style="font-size: 0.875rem; color: var(--text-muted); max-width: 420px; margin-bottom: 20px;">
+            Завершайте модули, сдавайте практические задания и получайте именные сертификаты платформы CodeStart!
+          </p>
+          <a href="courses.html" class="btn-primary" style="display: inline-flex;">Перейти к каталогу курсов</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Подвал сайта (Footer) -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <a href="index.html" class="logo">
+          <span class="logo-badge">&lt;/&gt;</span>
+          <span>CodeStart</span>
+        </a>
+        <span class="footer-copy">Учись создавать то, чем будешь гордиться.</span>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Обучение</strong>
+        <a href="courses.html">Все курсы</a>
+        <a href="directions.html">Направления</a>
+        <a href="about.html">О платформе</a>
+      </div>
+      <div class="footer-links">
+        <strong class="footer-heading">Поддержка</strong>
+        <a href="help.html">Помощь</a>
+        <a href="faq.html">Вопросы и ответы</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="index.html#reviews">Отзывы учеников</a>
+        <a class="footer-contact" href="mailto:support@codestart.ru">support@codestart.ru</a>
+      </div>
+      <div class="footer-links">
+        <a class="footer-heading" href="payment.html">Способы оплаты</a>
+        <a href="payment.html">Посмотреть все способы оплаты</a>
+        <span class="footer-contact">Банковские карты и СБП</span>
+        <div class="footer-payment-methods" aria-label="Способы оплаты">
+          <span>МИР</span><span>СБП</span><span>Visa</span><span>Mastercard</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 CodeStart. Все права защищены.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно редактирования профиля -->
+  <div class="modal-overlay" id="edit-profile-modal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title">Редактирование профиля</h2>
+      <p class="modal-subtitle">Обновите ваши персональные данные</p>
+      <form id="edit-profile-form">
+        <div class="form-group">
+          <label class="form-label" for="edit-name">Имя и фамилия</label>
+          <input type="text" id="edit-name" class="form-input" value="Александр Смирнов" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="edit-username">Никнейм</label>
+          <input type="text" id="edit-username" class="form-input" value="alex_smirnov" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="edit-email">Электронная почта</label>
+          <input type="email" id="edit-email" class="form-input" value="alex.smirnov@mail.ru" required>
+        </div>
+        <button type="submit" class="btn-submit">Сохранить изменения</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Модальное окно запуска урока -->
+  <div class="modal-overlay" id="lesson-modal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <div class="tag-badge" style="margin-bottom: 12px; display: inline-block;">Урок готов к началу</div>
+      <h2 class="modal-title" id="lesson-modal-title">Модуль 5 · Функции и аргументы</h2>
+      <p class="modal-subtitle" id="lesson-modal-course">Курс: Python с нуля</p>
+      
+      <div class="lesson-preview-card">
+        <div style="font-weight: 600; margin-bottom: 8px;">Что вас ждёт на этом уроке:</div>
+        <ul class="lesson-preview-list">
+          <li>▶️ Видеолекция (15 минут)</li>
+          <li>📖 Теоретический конспект с примерами</li>
+          <li>💻 3 интерактивные задачи с автопроверкой кода</li>
+        </ul>
+      </div>
+
+      <button class="btn-primary" style="width: 100%;" onclick="alert('Запуск обучающей среды... Удачного урока!'); document.getElementById('lesson-modal').classList.remove('active');">
+        Начать урок
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно авторизации (Войти) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Закрыть">&times;</button>
+      <h2 class="modal-title">Вход в аккаунт</h2>
+      <p class="modal-subtitle">Войдите, чтобы продолжить обучение</p>
+      <form id="login-form">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Электронная почта</label>
+          <input type="email" id="login-email" class="form-input" placeholder="name@example.com" value="alex.smirnov@mail.ru" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="login-password">Пароль</label>
+          <input type="password" id="login-password" class="form-input" placeholder="••••••••" value="password123" required>
+        </div>
+        <button type="submit" class="btn-submit">Войти</button>
+      </form>
+      <p class="modal-footer-text">
+        Нет аккаунта? <a href="#">Зарегистрироваться</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

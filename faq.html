@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8fafc">
+  <title>Вопросы и ответы — CodeStart</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="index.html" class="logo"><span class="logo-badge">&lt;/&gt;</span><span>CodeStart</span></a>
+        <nav aria-label="Основная навигация"><ul class="nav-links"><li><a href="courses.html">Курсы</a></li><li><a href="directions.html">Направления</a></li><li><a href="about.html">О нас</a></li></ul></nav>
+      </div>
+      <div class="header-right">
+        <button class="btn-theme-toggle" aria-label="Переключить тему" title="Светлая / Темная тема">
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+        </button>
+        <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+        </button>
+      </div>
+      <nav class="mobile-navigation" id="mobile-navigation" aria-label="Мобильная навигация">
+        <a href="courses.html">Курсы</a><a href="directions.html">Направления</a><a href="about.html">О нас</a>
+        <a href="help.html">Помощь</a><a href="faq.html" aria-current="page">Вопросы и ответы</a>
+        <a href="contacts.html">Контакты</a><a href="payment.html">Способы оплаты</a>
+      </nav>
+    </div>
+  </header>
+  <main class="support-page">
+    <div class="container support-faq-layout">
+      <section class="page-title-block support-page-title">
+        <span class="support-eyebrow">Поддержка CodeStart</span>
+        <h1 class="page-title">Вопросы и ответы</h1>
+        <p class="page-subtitle">Нажмите на вопрос, чтобы открыть ответ. Нажмите ещё раз, чтобы свернуть его.</p>
+      </section>
+      <section class="faq-list support-faq-list" aria-label="Часто задаваемые вопросы">
+        <details class="faq-item">
+          <summary>Можно ли начать обучение бесплатно?</summary>
+          <div class="faq-answer"><p>Да, в каталоге есть бесплатные курсы. Выберите фильтр «Бесплатные», чтобы найти их.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Как выбрать подходящий курс?</summary>
+          <div class="faq-answer"><p>Откройте каталог курсов, выберите направление и уровень подготовки, а затем ознакомьтесь с программой курса.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Нужно ли уметь программировать, чтобы начать?</summary>
+          <div class="faq-answer"><p>Начать можно с нуля: выбирайте курс для начинающих и проходите темы по порядку.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Можно ли учиться в удобном для себя темпе?</summary>
+          <div class="faq-answer"><p>Да. Проходите уроки в удобное время и возвращайтесь к материалам в собственном темпе.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Какие способы оплаты доступны?</summary>
+          <div class="faq-answer"><p>Доступны банковские карты МИР, Visa и Mastercard, а также оплата через СБП. Подробнее — на странице <a href="payment.html">способов оплаты</a>.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Как связаться со службой поддержки?</summary>
+          <div class="faq-answer"><p>Напишите нам на <a href="mailto:support@codestart.ru">support@codestart.ru</a> или воспользуйтесь страницей <a href="contacts.html">контактов</a>.</p></div>
+        </details>
+      </section>
+      <aside class="support-contact-banner">
+        <div><h2>Остались вопросы?</h2><p>Команда CodeStart поможет вам найти ответ.</p></div>
+        <a class="btn-primary" href="contacts.html">Написать нам</a>
+      </aside>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container support-footer"><a href="index.html" class="logo"><span class="logo-badge">&lt;/&gt;</span><span>CodeStart</span></a>
+      <nav aria-label="Разделы поддержки"><a href="help.html">Помощь</a><a href="faq.html">Вопросы и ответы</a><a href="contacts.html">Контакты</a><a href="payment.html">Способы оплаты</a></nav>
+      <span class="footer-copy">© 2026 CodeStart. Все права защищены.</span>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
